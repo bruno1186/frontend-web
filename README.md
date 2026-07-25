@@ -1,57 +1,49 @@
 # frontend-web
 
-Aplicacao web moderna construida com React + TypeScript, utilizando o framework Next.js e estilizacao com Tailwind CSS. Projeto de referencia de frontend seguindo as principais praticas de mercado.
+Aplicacao web em React + TypeScript com Next.js 14 (App Router) e Tailwind CSS. Consome a API de usuarios (backend-api) via TanStack Query.
 
-## Tecnologias
+## Stack
 
-- React 18
-- - TypeScript
-  - - Next.js 14 (App Router, SSR e SSG)
-    - - Tailwind CSS
-      - - React Query (TanStack Query) para data fetching
-        - - Zustand para gerenciamento de estado
-          - - React Hook Form + Zod para formularios e validacao
-            - - ESLint + Prettier
-              - - Vitest e Testing Library
-               
-                - ## Estrutura de pastas
-               
-                - ```
-                  frontend-web/
-                    src/
-                      app/            # rotas (App Router do Next.js)
-                      components/     # componentes reutilizaveis de UI
-                      hooks/          # custom hooks
-                      lib/            # utilitarios e clientes de API
-                      store/          # estado global (Zustand)
-                      styles/         # estilos globais e Tailwind
-                    public/           # assets estaticos
-                    package.json
-                    tailwind.config.ts
-                    next.config.js
-                  ```
+- React 18, TypeScript
+- Next.js 14 (App Router)
+- Tailwind CSS
+- TanStack Query (data fetching)
 
-                  ## Como rodar localmente
+## Estrutura
 
-                  ```bash
-                  # instalar dependencias
-                  npm install
+```
+src/
+  app/
+    layout.tsx        # layout raiz
+    providers.tsx     # QueryClientProvider
+    page.tsx          # pagina inicial (lista de usuarios)
+    globals.css       # estilos globais + Tailwind
+  components/
+    Button.tsx        # componente de UI reutilizavel
+  hooks/
+    useUsers.ts       # hook de data fetching (TanStack Query)
+next.config.mjs
+tailwind.config.ts
+postcss.config.mjs
+tsconfig.json
+```
 
-                  # iniciar em modo desenvolvimento
-                  npm run dev
-                  ```
+## Como rodar
 
-                  A aplicacao sobe por padrao em `http://localhost:3000`.
+```
+npm install
+npm run dev
+```
 
-                  ## Scripts principais
+Aplicacao em `http://localhost:3000`. Por padrao consome a API em `http://localhost:3000/api` (backend-api); ajuste a URL base em `src/hooks/useUsers.ts` conforme o ambiente.
 
-                  - `npm run dev` - modo desenvolvimento
-                  - - `npm run build` - build de producao
-                    - - `npm run start` - servir build de producao
-                      - - `npm run lint` - analise estatica
-                        - - `npm run test` - testes
-                         
-                          - ## Licenca
-                         
-                          - MIT
-                          - 
+## Scripts
+
+- `npm run dev` - desenvolvimento
+- `npm run build` - build de producao
+- `npm run start` - servir build
+- `npm run lint` - analise estatica
+
+## Licenca
+
+MIT
